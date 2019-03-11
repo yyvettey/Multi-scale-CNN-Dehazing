@@ -1,4 +1,4 @@
-function dehazedImageRGB = mscnndehazing(imagename, gamma)
+function dehazedImageRGB = mscnndehazing(imagename, dehaze_name, gamma)
 
 %% option
 whitebalance = 1;   % 0 or 1
@@ -170,8 +170,9 @@ opts.useGpu = false;
 %     for gamma = 8:17
      dehazedImageRGB = estimate_J(img_n, map, A, gamma); 
 %         imwrite(dehazedImageRGB, ['./resultsall/',hazy_data(ii).name,'_dehazed_adaptT',num2str(gamma),'.png']);
-%     end
-    figure;subplot(221);imshow(map1);title('Transmission of Coarselayer');
-    subplot(222);imshow(map2);title('Transmission of Finelayer');
-    subplot(223);imshow(img0);title('hazy image');subplot(224);imshow(dehazedImageRGB);title('dehazed image');
+        imwrite(dehazedImageRGB, dehaze_name);
+    end
+%     figure;subplot(221);imshow(map1);title('Transmission of Coarselayer');
+%     subplot(222);imshow(map2);title('Transmission of Finelayer');
+%     subplot(223);imshow(img0);title('hazy image');subplot(224);imshow(dehazedImageRGB);title('dehazed image');
 % end
